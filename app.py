@@ -281,12 +281,10 @@ st.metric(
     "Frequent Itemsets",
     len(frequent_itemsets)
 )
-frequent_itemsets["itemsets"] = frequent_itemsets["itemsets"].apply(
-    lambda x: ", ".join(list(x))
-)
+
 st.dataframe(
-    frequent_itemsets.head(20),
-    use_container_width="stretch"
+    display_itemsets.head(20),
+    width="stretch"
 )
 
 # ============================
@@ -300,7 +298,10 @@ rules = association_rules(
     metric="confidence",
     min_threshold=confidence
 )
-
+display_itemsets = frequent_itemsets.copy()
+display_itemsets["itemsets"] = display_itemsets["itemsets"].apply(
+    lambda x: ", ".join(list(x))
+)
 rules = rules[rules["lift"] >= lift]
 
 st.metric(
