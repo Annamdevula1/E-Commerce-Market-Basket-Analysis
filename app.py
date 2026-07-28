@@ -17,11 +17,28 @@ st.set_page_config(
     page_icon="🛒",
     layout="wide"
 )
-
+st.image(
+    "E-COMMERCE banner.jpeg",
+    use_container_width=True
+)
 
 # ============================
 # CUSTOM CSS
 # ============================
+theme = st.sidebar.radio(
+    "🌙 Theme",
+    ["Light", "Dark"]
+)
+
+if theme == "Dark":
+    bg = "#0E1117"
+    text = "white"
+    card = "#262730"
+else:
+    bg = "#F4F8FB"
+    text = "black"
+    card = "white"
+    
 st.markdown("""
 <style>
 
@@ -312,6 +329,37 @@ st.dataframe(
     ],
     use_container_width=True
 )
+st.subheader("🔍 Search Product Recommendations")
+
+product = st.selectbox(
+    "Choose Product",
+    sorted(df["Description"].unique())
+)
+
+result = rules[
+    rules["antecedents"].str.contains(
+        product,
+        case=False,
+        na=False
+    )
+]
+
+if len(result):
+
+    st.success("Recommended Products")
+
+    st.dataframe(
+        result[
+            ["antecedents",
+             "consequents",
+             "confidence",
+             "lift"]
+        ]
+    )
+
+else:
+
+    st.warning("No recommendation found.")
 
 # ============================
 # TOP ASSOCIATIONS
