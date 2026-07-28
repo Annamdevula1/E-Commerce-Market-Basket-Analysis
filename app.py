@@ -283,7 +283,7 @@ st.metric(
 )
 
 st.dataframe(
-    display_itemsets.head(20),
+    frequent_itemsets.head(20),
     width="stretch"
 )
 
