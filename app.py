@@ -18,7 +18,7 @@ st.set_page_config(
 )
 st.image(
     "E-COMMERCE banner.jpeg",
-    use_container_width=True
+    use_container_width=
 )
 
 # ============================
@@ -282,7 +282,9 @@ st.metric(
     "Frequent Itemsets",
     len(frequent_itemsets)
 )
-
+frequent_itemsets["itemsets"] = frequent_itemsets["itemsets"].apply(
+    lambda x: ", ".join(list(x))
+)
 st.dataframe(
     frequent_itemsets.head(20),
     use_container_width=True
