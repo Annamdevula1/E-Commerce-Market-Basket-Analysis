@@ -17,8 +17,7 @@ st.set_page_config(
     layout="wide"
 )
 st.image(
-    "E-COMMERCE banner.jpeg",
-    use_container_width=
+    "E-COMMERCE banner.jpeg",use_container_width="stretch"
 )
 
 # ============================
@@ -217,7 +216,7 @@ st.subheader("📋 Dataset Preview")
 
 st.dataframe(
     df.head(10),
-    use_container_width=True
+    use_container_width="stretch"
 )
 
 st.markdown("---")
@@ -287,7 +286,7 @@ frequent_itemsets["itemsets"] = frequent_itemsets["itemsets"].apply(
 )
 st.dataframe(
     frequent_itemsets.head(20),
-    use_container_width=True
+    use_container_width="stretch"
 )
 
 # ============================
@@ -328,7 +327,7 @@ st.dataframe(
             "lift"
         ]
     ],
-    use_container_width=True
+    use_container_width="stretch"
 )
 st.subheader("🔍 Search Product Recommendations")
 
@@ -423,7 +422,7 @@ with tab1:
 
     st.plotly_chart(
         fig,
-        use_container_width=True
+        use_container_width="stretch"
     )
 
 # ----------------------------------
@@ -448,7 +447,7 @@ with tab2:
 
     st.plotly_chart(
         fig,
-        use_container_width=True
+        use_container_width="stretch"
     )
 
 # ----------------------------------
